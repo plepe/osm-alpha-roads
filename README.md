@@ -11,7 +11,7 @@ npm install
 ```
 
 # Run
-By default, the road database for Vienna, Austria will be loaded. Change the variable "bound" in download_data.js for a different area
+By default, the road database for Vienna, Austria will be loaded. Change the variable "bounds" in download_data.js for a different area
 
 ```sh
 node ./download_data.js # create a file data.json with all roads in the selected area
