@@ -30,6 +30,9 @@ let newRoutes = allNames.map(name => [ name ])
 // now try to extend all routes with an adjacent name
 while (newRoutes.length) {
   routes = newRoutes
+
+  console.log('- found ' + routes.length + ' routes with ' + routes[0].length + ' segments')
+
   newRoutes = extendRoutes(routes, crossNamesAB, crossNodesAB)
 }
 
