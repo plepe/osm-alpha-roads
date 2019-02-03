@@ -1,29 +1,12 @@
 const fs = require('fs')
+
+const buildNodesIndex = require('./src/buildNodesIndex')
+const buildNamesIndex = require('./src/buildNamesIndex')
+
 let data = JSON.parse(fs.readFileSync('data.json'))
 
-let nodesIndex = {}
-let namesIndex = {}
+let nodesIndex = buildNodesIndex(data)
+let namesIndex = buildNamesIndex(data)
 
-function buildIndex (data) {
-  data.elements.forEach(
-    (element) => {
-      let name = element.tags.name
-      if (!(name in namesIndex)) {
-        namesIndex[name] = []
-      }
-      namesIndex[name] = namesIndex[name].concat(element.nodes)
-
-      element.nodes.forEach(
-        (nodeId) => {
-          if (!(nodeId in nodesIndex)) {
-            nodesIndex[nodeId] = []
-          }
-
-          nodesIndex[nodeId].push(name)
-        }
-      )
-    }
-  )
-}
-
-buildIndex(data)
+console.log(nodesIndex)
+console.log(namesIndex)
