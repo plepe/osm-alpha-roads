@@ -1,3 +1,7 @@
+//// Configuration ////
+// stop for routes with length n
+const stopLength = 99
+
 const fs = require('fs')
 
 const buildNodesIndex = require('./src/buildNodesIndex')
@@ -30,6 +34,10 @@ let newRoutes = allNames.map(name => [ name ])
 // now try to extend all routes with an adjacent name
 while (newRoutes.length) {
   routes = newRoutes
+
+  if (routes[0].length === stopLength) {
+    break
+  }
 
   console.log('- found ' + routes.length + ' routes with ' + routes[0].length + ' segments')
 
