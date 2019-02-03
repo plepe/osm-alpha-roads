@@ -10,7 +10,7 @@ module.exports = function extendRoutes (routes, namesIndex, nodesIndex) {
       let nodes = namesIndex[name]
 
       for (let otherName in namesIndex) {
-        if (otherName.codePointAt(0) == nextChar) {
+        if (otherName.codePointAt(0) === nextChar) {
           let cross = namesIndex[otherName].filter(otherNodeId => nodes.includes(otherNodeId))
           if (!cross.length) {
             continue

@@ -9,6 +9,10 @@ request(
     body: '[out:json][bbox:' + bounds + '];way[highway][name];out body;'
   },
   (err, response, body) => {
+    if (err) {
+      throw (err)
+    }
+
     fs.writeFile('data.json', body, () => {})
   }
 )

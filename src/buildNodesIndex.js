@@ -19,5 +19,3 @@ module.exports = function buildNodesIndex (data) {
 
   return nodesIndex
 }
-
-

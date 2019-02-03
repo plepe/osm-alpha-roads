@@ -16,7 +16,7 @@ module.exports = function findCrossNodesAB (data) {
             }
 
             let codeB = b.codePointAt(0)
-            if (codeA == codeB + 1 || codeA == codeB - 1) {
+            if (codeA === codeB + 1 || codeA === codeB - 1) {
               found = true
             }
           }
