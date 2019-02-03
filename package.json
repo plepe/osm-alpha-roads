@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "request": "^2.88.0"
+  },
+  "dependencies": {
+    "just-unique": "^3.2.0"
   }
 }
