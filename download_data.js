@@ -1,7 +1,7 @@
 const fs = require('fs')
 const request = require('request')
 
-let bounds = '48.4,16.2,48.6,16.4'
+let bounds = '48.1271,16.2488,48.2951,16.5152'
 request(
   {
     method: 'POST',
