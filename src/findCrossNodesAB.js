@@ -7,6 +7,12 @@ module.exports = function findCrossNodesAB (data) {
     let found = false
     node.forEach(
       (a, ai) => {
+        // unnamed road - use all
+        if (a.length === 0) {
+          found = true
+          return
+        }
+
         let codeA = a.codePointAt(0)
 
         return node.forEach(

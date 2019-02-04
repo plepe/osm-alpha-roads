@@ -7,11 +7,11 @@ module.exports = function buildNameIndex (data) {
         return
       }
 
-      let name = element.tags.name
+      let name = element.tags.name || ''
 
-      if (!name) {
-        return
-      }
+//      if (!name) {
+//        return
+//      }
 
       if (!(name in namesIndex)) {
         namesIndex[name] = []

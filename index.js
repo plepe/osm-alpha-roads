@@ -37,6 +37,7 @@ let crossNodesAB = findCrossNodesAB(crossNodes)
 let crossNamesAB = buildCrossNamesAB(crossNodes)
 
 // list of all names in the database
+delete crossNamesAB['']
 let allNames = Object.keys(crossNamesAB)
 
 // build the first list of routes - with only one member (all names are possible)
