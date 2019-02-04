@@ -1,4 +1,6 @@
-module.exports = function extendRoutes (routes, namesIndex, nodesIndex) {
+const findNodesViaUnnamed = require('./findNodesViaUnnamed')
+
+module.exports = function extendRoutes (routes, namesIndex, nodesIndex, unnamedIndex) {
   let result = []
   let done = {}
 
@@ -8,6 +10,8 @@ module.exports = function extendRoutes (routes, namesIndex, nodesIndex) {
       let lastChar = name.codePointAt(0)
       let nextChar = lastChar + 1
       let nodes = namesIndex[name]
+
+      nodes = findNodesViaUnnamed(name, nodes, unnamedIndex)
 
       for (let otherName in namesIndex) {
         if (otherName.codePointAt(0) === nextChar) {

@@ -22,7 +22,6 @@ let namesIndex = buildNamesIndex(data)
 
 // Build an index of all unnamed roads with the node ids as keys and arrays of node ids as value (where the node id is member) (e.g. { 1234: [ [ 1234, 1235, 1236 ], [ 50, 1234, 5555 ], ... ], ... }
 let unnamedIndex = buildUnnamedIndex(data)
-console.log(unnamedIndex)
 
 // Get a list of all nodes which have more than two ways (with different names)
 let crossNodes = findCrossNodes(nodesIndex)
@@ -36,10 +35,13 @@ let crossNamesAB = buildCrossNamesAB(crossNodes)
 // list of all names in the database
 let allNames = Object.keys(crossNamesAB)
 
-
 // build the first list of routes - with only one member (all names are possible)
 let routes
 let newRoutes = allNames.map(name => [ name ])
+
+// if (maxUnnamedDistance === 0) {
+// namesIndex = crossNamesAB
+// }
 
 // now try to extend all routes with an adjacent name
 while (newRoutes.length) {
@@ -51,7 +53,7 @@ while (newRoutes.length) {
 
   console.log('- found ' + routes.length + ' routes with ' + routes[0].length + ' segments')
 
-  newRoutes = extendRoutes(routes, crossNamesAB, crossNodesAB)
+  newRoutes = extendRoutes(routes, namesIndex, crossNodesAB, unnamedIndex)
 }
 
 // Final output
