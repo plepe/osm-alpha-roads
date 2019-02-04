@@ -5,6 +5,10 @@ module.exports = function buildNodesIndex (data) {
     (element) => {
       let name = element.tags.name
 
+      if (!name) {
+        return
+      }
+
       element.nodes.forEach(
         (nodeId) => {
           if (!(nodeId in nodesIndex)) {

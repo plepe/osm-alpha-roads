@@ -6,7 +6,7 @@ request(
   {
     method: 'POST',
     url: 'https://overpass-api.de/api/interpreter',
-    body: '[out:json][bbox:' + bounds + '];way[highway][name];out body;'
+    body: '[out:json][bbox:' + bounds + '];way[highway];out body;'
   },
   (err, response, body) => {
     if (err) {
