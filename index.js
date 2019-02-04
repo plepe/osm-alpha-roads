@@ -6,6 +6,7 @@ const fs = require('fs')
 
 const buildNodesIndex = require('./src/buildNodesIndex')
 const buildNamesIndex = require('./src/buildNamesIndex')
+const buildUnnamedIndex = require('./src/buildUnnamedIndex')
 const findCrossNodes = require('./src/findCrossNodes')
 const findCrossNodesAB = require('./src/findCrossNodesAB')
 const buildCrossNamesAB = require('./src/buildCrossNamesAB')
@@ -18,6 +19,10 @@ let nodesIndex = buildNodesIndex(data)
 
 // Build an index of all names with the list of their nodes as values - not needed
 let namesIndex = buildNamesIndex(data)
+
+// Build an index of all unnamed roads with the node ids as keys and arrays of node ids as value (where the node id is member) (e.g. { 1234: [ [ 1234, 1235, 1236 ], [ 50, 1234, 5555 ], ... ], ... }
+let unnamedIndex = buildUnnamedIndex(data)
+console.log(unnamedIndex)
 
 // Get a list of all nodes which have more than two ways (with different names)
 let crossNodes = findCrossNodes(nodesIndex)
