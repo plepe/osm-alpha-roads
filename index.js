@@ -5,6 +5,7 @@ const stopLength = 99
 const fs = require('fs')
 
 const buildNodesIndex = require('./src/buildNodesIndex')
+const buildNamesIndex = require('./src/buildNamesIndex')
 const findCrossNodes = require('./src/findCrossNodes')
 const findCrossNodesAB = require('./src/findCrossNodesAB')
 const buildCrossNamesAB = require('./src/buildCrossNamesAB')
@@ -14,6 +15,9 @@ let data = JSON.parse(fs.readFileSync('data.json'))
 
 // First build an index of all nodes with the list of road names as values
 let nodesIndex = buildNodesIndex(data)
+
+// Build an index of all names with the list of their nodes as values - not needed
+let namesIndex = buildNamesIndex(data)
 
 // Get a list of all nodes which have more than two ways (with different names)
 let crossNodes = findCrossNodes(nodesIndex)
@@ -26,6 +30,7 @@ let crossNamesAB = buildCrossNamesAB(crossNodes)
 
 // list of all names in the database
 let allNames = Object.keys(crossNamesAB)
+
 
 // build the first list of routes - with only one member (all names are possible)
 let routes
