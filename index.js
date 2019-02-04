@@ -1,4 +1,4 @@
-//// Configuration ////
+/// / Configuration ////
 // stop for routes with length n
 const stopLength = 99
 
@@ -57,7 +57,7 @@ while (newRoutes.length) {
 
   console.log('- found ' + routes.length + ' routes with ' + routes[0].length + ' segments')
 
-  newRoutes = extendRoutes(routes, namesIndex, crossNodesAB, unnamedIndex)
+  newRoutes = extendRoutes(routes, namesIndex, crossNodesAB, unnamedIndex, nodesGeom)
 }
 
 // Final output

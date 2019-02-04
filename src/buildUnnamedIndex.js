@@ -26,5 +26,3 @@ module.exports = function buildUnnamedIndex (data) {
 
   return result
 }
-
-

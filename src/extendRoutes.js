@@ -1,6 +1,6 @@
 const findNodesViaUnnamed = require('./findNodesViaUnnamed')
 
-module.exports = function extendRoutes (routes, namesIndex, nodesIndex, unnamedIndex) {
+module.exports = function extendRoutes (routes, namesIndex, nodesIndex, unnamedIndex, nodesGeom) {
   let result = []
   let done = {}
 
@@ -11,11 +11,12 @@ module.exports = function extendRoutes (routes, namesIndex, nodesIndex, unnamedI
       let nextChar = lastChar + 1
       let nodes = namesIndex[name]
 
-      nodes = findNodesViaUnnamed(name, nodes, unnamedIndex)
+      nodes = findNodesViaUnnamed(name, nodes, unnamedIndex, nodesGeom, 50)
+      nodes = Object.keys(nodes)
 
       for (let otherName in namesIndex) {
         if (otherName.codePointAt(0) === nextChar) {
-          let cross = namesIndex[otherName].filter(otherNodeId => nodes.includes(otherNodeId))
+          let cross = namesIndex[otherName].filter(otherNodeId => nodes.includes('' + otherNodeId))
           if (!cross.length) {
             continue
           }

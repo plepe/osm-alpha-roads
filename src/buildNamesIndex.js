@@ -22,5 +22,3 @@ module.exports = function buildNameIndex (data) {
 
   return namesIndex
 }
-
-
