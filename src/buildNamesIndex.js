@@ -3,6 +3,10 @@ module.exports = function buildNameIndex (data) {
 
   data.elements.forEach(
     (element) => {
+      if (element.type !== 'way') {
+        return
+      }
+
       let name = element.tags.name
 
       if (!name) {
