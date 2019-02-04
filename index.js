@@ -43,6 +43,7 @@ let allNames = Object.keys(crossNamesAB)
 // build the first list of routes - with only one member (all names are possible)
 let routes
 let newRoutes = allNames.map(name => [ name ])
+let length = 0
 
 // if (maxUnnamedDistance === 0) {
 // namesIndex = crossNamesAB
@@ -51,8 +52,9 @@ let newRoutes = allNames.map(name => [ name ])
 // now try to extend all routes with an adjacent name
 while (newRoutes.length) {
   routes = newRoutes
+  length++
 
-  if (routes[0].length === stopLength) {
+  if (length === stopLength) {
     break
   }
 
@@ -62,7 +64,7 @@ while (newRoutes.length) {
 }
 
 // Final output
-console.log('Longest route(s) have ' + routes[0].length + ' segments:')
+console.log('Longest route(s) have ' + length + ' segments:')
 routes.forEach(
   (route) => {
     console.log('* ' + route.join(' - '))
