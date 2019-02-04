@@ -12,13 +12,18 @@ module.exports = function extendRoutes (routes, namesIndex, nodesIndex, unnamedI
       let nodes = namesIndex[name]
 
       nodes = findNodesViaUnnamed(name, nodes, unnamedIndex, nodesGeom, 50)
-      nodes = Object.keys(nodes)
 
       for (let otherName in namesIndex) {
         if (otherName.codePointAt(0) === nextChar) {
-          let cross = namesIndex[otherName].filter(otherNodeId => nodes.includes('' + otherNodeId))
+          let cross = namesIndex[otherName].filter(otherNodeId => otherNodeId in nodes)
           if (!cross.length) {
             continue
+          }
+
+          let distance = nodes[cross[0]]
+
+          if (distance > 0) {
+            route.push(distance)
           }
 
           let newRoute = route.concat([ otherName ])

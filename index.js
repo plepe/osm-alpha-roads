@@ -67,6 +67,6 @@ while (newRoutes.length) {
 console.log('Longest route(s) have ' + length + ' segments:')
 routes.forEach(
   (route) => {
-    console.log('* ' + route.join(' - '))
+    console.log('* ' + route.map(p => typeof p === 'number' ? Math.round(p) +'m' : p).join(' - '))
   }
 )
